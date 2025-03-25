@@ -1,5 +1,6 @@
-from users.user import create_user, consult_users, update_user, delete_user
-from books.book import create_book, list_books, update_book, delete_book
+from users.user import users, create_user, consult_users, update_user, delete_user
+from books.book import books, create_book, list_books, update_book, delete_book
+from loans.loan import register_loan, list_loans, register_return, delete_loan
 
 def main_menu():
     # Muestra el menú principal y permite al usuario seleccionar un área del sistema.
@@ -18,7 +19,7 @@ def main_menu():
         elif case == "2":
             book_menu()
         elif case == "3":
-            print("Gestión de Préstamos.")
+            loan_menu()
         elif case == "4":
             print("Saliste del sistema.")
             break
@@ -27,7 +28,7 @@ def main_menu():
 
 # ---------- MENU USUARIOS ----------
 def user_menu():
-    
+
     # Muestra el menú de gestión de usuarios.
 
     while True:
@@ -103,6 +104,41 @@ def book_menu():
             # Eliminar libro
             isbn = input("Ingrese el ISBN del libro a eliminar: ")
             delete_book(isbn)
+        elif case == "5":
+            # Volver al menú principal
+            break
+        else:
+            print("Opción no válida. Por favor, intente de nuevo.")
+
+# ---------- MENU PRÉSTAMOS ----------
+def loan_menu():
+    # Muestra el menú de gestión de préstamos.
+    while True:
+        print("\n--- Gestión de Préstamos ---")
+        print("1. Registrar Préstamo")
+        print("2. Consultar Préstamos")
+        print("3. Registrar Devolución")
+        print("4. Eliminar Préstamo")
+        print("5. Volver al Menú Principal")
+        
+        case = input("Seleccione una opción: ")
+        
+        if case == "1":
+            # Registrar préstamo
+            user_email = input("Ingrese el correo del usuario: ")
+            isbn = input("Ingrese el ISBN del libro: ")
+            register_loan(user_email, isbn)
+        elif case == "2":
+            # Consultar préstamos
+            list_loans()
+        elif case == "3":
+            # Registrar devolución
+            loan_id = int(input("Ingrese el código del préstamo a devolver: "))
+            register_return(loan_id)
+        elif case == "4":
+            # Eliminar préstamo
+            loan_id = int(input("Ingrese el código del préstamo a eliminar: "))
+            delete_loan(loan_id)
         elif case == "5":
             # Volver al menú principal
             break
