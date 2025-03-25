@@ -4,7 +4,6 @@ from loans.loan import register_loan, list_loans, register_return, delete_loan
 
 def main_menu():
     # Muestra el menú principal y permite al usuario seleccionar un área del sistema.
-
     while True:
         print("\n--- Sistema de Gestión de Biblioteca ---")
         print("1. Gestión de Usuarios.")
@@ -28,9 +27,7 @@ def main_menu():
 
 # ---------- MENU USUARIOS ----------
 def user_menu():
-
     # Muestra el menú de gestión de usuarios.
-
     while True:
         print("\n--- Gestión de Usuarios ---")
         print("1. Crear Usuario")
