@@ -6,15 +6,14 @@ def create_user(name, lastName, phone, email, identity):
     
     # Crea un nuevo usuario y lo agrega a la lista users.
     # Verifica que el correo no este duplicado.
-
-    # Validar que todos los campos estén presentes
+    # Validar que todos los campos estén presentes.
     if not all([name, lastName, phone, email, identity]):
         print("Todos los campos son obligatorios.")
         return
     # Verificar si el correo ya existe
     for user in users:
         if user["email"] == email:
-            print("El usuario ya existe con este correo.")
+            print("Ya existe un usuario con este correo electronico.")
             return
 
     # Crear un nuevo usuario como diccionario
@@ -26,7 +25,7 @@ def create_user(name, lastName, phone, email, identity):
         "identity": identity
     }
     users.append(new_user)  # Agregar el usuario a la lista
-    print(f"El usuario {user['name']} {user['lastName']} fue creado con éxito.")
+    print(f"El usuario {new_user['name']} {new_user['lastName']} fue creado con éxito.")
 
 # Consultar Usuarios
 def consult_users():
