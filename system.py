@@ -1,4 +1,5 @@
 from users.user import create_user, consult_users, update_user, delete_user
+from books.book import create_book, list_books, update_book, delete_book
 
 def main_menu():
     # Muestra el menú principal y permite al usuario seleccionar un área del sistema.
@@ -15,7 +16,7 @@ def main_menu():
         if case == "1":
             user_menu()
         elif case == "2":
-            print("Gestión de Libros.")
+            book_menu()
         elif case == "3":
             print("Gestión de Préstamos.")
         elif case == "4":
@@ -24,6 +25,7 @@ def main_menu():
         else:
             print("Opción no válida. Por favor, intente de nuevo.")
 
+# ---------- MENU USUARIOS ----------
 def user_menu():
     
     # Muestra el menú de gestión de usuarios.
@@ -62,6 +64,45 @@ def user_menu():
             # Eliminar usuario
             email = input("Ingrese el correo del usuario a eliminar: ")
             delete_user(email)
+        elif case == "5":
+            # Volver al menú principal
+            break
+        else:
+            print("Opción no válida. Por favor, intente de nuevo.")
+
+# ---------- MENU LIBROS ----------
+def book_menu():
+    # Muestra el menú de gestión de libros.
+    while True:
+        print("\n--- Gestión de Libros ---")
+        print("1. Registrar Libro")
+        print("2. Consultar Libros")
+        print("3. Modificar Libro")
+        print("4. Eliminar Libro")
+        print("5. Volver al Menú Principal")
+        
+        case = input("Seleccione una opción: ")
+        
+        if case == "1":
+            # Registrar libro
+            title = input("Ingrese el título: ")
+            author = input("Ingrese el autor: ")
+            isbn = input("Ingrese el ISBN: ")
+            create_book(title, author, isbn)
+        elif case == "2":
+            # Consultar libros
+            list_books()
+        elif case == "3":
+            # Modificar libro
+            isbn = input("Ingrese el ISBN del libro a modificar: ")
+            title = input("Nuevo título (dejar en blanco para no modificar): ")
+            author = input("Nuevo autor (dejar en blanco para no modificar): ")
+            available = input("Disponible (True/False) (dejar en blanco para no modificar): ")
+            update_book(isbn, title or None, author or None, available or None)
+        elif case == "4":
+            # Eliminar libro
+            isbn = input("Ingrese el ISBN del libro a eliminar: ")
+            delete_book(isbn)
         elif case == "5":
             # Volver al menú principal
             break
